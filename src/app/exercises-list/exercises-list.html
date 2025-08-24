@@ -1,0 +1,16 @@
+@if (exercises().length > 0) {
+  <ul>
+    @for (i of exercises(); track i) {
+      <li>
+        <app-exercise-card
+          [exercise]="i.exercise"
+          [steps]="i.steps"
+          [open]="i.open"
+          (openUpdate)="handleCardToggle(i)"
+        ></app-exercise-card>
+      </li>
+    }
+  </ul>
+} @else {
+  <h1>TODO</h1>
+}

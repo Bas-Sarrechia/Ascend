@@ -1,0 +1,20 @@
+<section [class.showDetails]="open() === OpenState.OPEN"
+         [class.hideDetails]="open() === OpenState.CLOSED"
+         class="card">
+  <div (click)="updateOpenState()">
+    <h1>{{ exercise() }}</h1>
+    <section class="details">
+      <div class="label">Weight:</div>
+      <div class="repweight">{{ repWeight() }}</div>
+      <button class="modify--button" (click)="plusFiver($event)">+</button>
+      <button class="modify--button modify--button__minus" (click)="minusFiver($event)">-</button>
+    </section>
+    <div>
+      <ul>
+        @for (step of steps(); track step) {
+          <li>{{ step }}</li>
+        }
+      </ul>
+    </div>
+  </div>
+</section>

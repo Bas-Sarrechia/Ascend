@@ -1,1 +1,51 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+* {
+  color: #F8F8FF;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+  letter-spacing: 2px;
+  font-size: 24px;
+  font-family: 'Bebas Neue', sans-serif;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg,
+  #1a1a1a 0%, #1a1a1a 6.67%,
+  #1b1b1b 6.67%, #1b1b1b 13.33%,
+  #1c1c1c 13.33%, #1c1c1c 20%,
+  #1d1d1d 20%, #1d1d1d 26.67%,
+  #1e1e1e 26.67%, #1e1e1e 33.33%,
+  #1f1f1f 33.33%, #1f1f1f 40%,
+  #202020 40%, #202020 46.67%,
+  #212121 46.67%, #212121 53.33%,
+  #222222 53.33%, #222222 60%,
+  #232323 60%, #232323 66.67%,
+  #242424 66.67%, #242424 73.33%,
+  #252525 73.33%, #252525 80%,
+  #262626 80%, #262626 86.67%,
+  #272727 86.67%, #272727 93.33%,
+  #282828 93.33%, #282828 100%
+  );
+}
+
+.icon {
+  background: var(--inactive);
+}
+
+.icon.active {
+  background: var(--main-orange);
+}
+
+:root {
+  --bg-black: #121212;
+  --black-accent-1: #272727;
+  --main-orange: #FF6B00;
+  --inactive: #86888E
+}

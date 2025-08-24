@@ -1,0 +1,112 @@
+.card {
+  background-color: var(--black-accent-1);
+  margin-left: 15px;
+  margin-right: 15px;
+  padding: 5px 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  overflow: hidden;
+  border: 0.02rem solid var(--main-orange);
+  height: 110px;
+  transition: max-height 0.5s ease-in-out;
+  max-height: 105px;
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.6), /* main directional shadow */ 12px 12px 24px rgba(0, 0, 0, 0.3), /* deeper offset for depth */ 4px 4px 10px rgba(255, 107, 0, 0.3); /* faint orange glow along same direction */
+}
+
+.repweight {
+  border: 1px solid var(--main-orange);
+  background-color: rgb(255, 107, 0, 0.1);
+  border-radius: 5px;
+  font-size: 20px;
+  padding: 7px 10px;
+  font-family: 'Bebas Neue', sans-serif;
+  width: 2em;
+}
+
+.repweight:after {
+  content: ' kg';
+  float: right;
+}
+
+.modify--button {
+  border: 1px solid var(--main-orange);
+  padding: 0 10px;
+  border-radius: 5px;
+  outline: none;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 30px;
+  background-color: var(--main-orange);
+  color: white;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), /* main directional shadow */ 6px 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.modify--button.modify--button__minus {
+  border: 1px solid #a8a8a8;
+  background-color: rgb(168, 168, 168, 0.1);
+  color: #a8a8a8;
+}
+
+.details {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.label {
+  font-size: 10px;
+  margin-right: 5px;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  top: -220px;
+  right: 0;
+  width: 50px;
+  height: 400px;
+  background: var(--main-orange);
+  pointer-events: none;
+  rotate: -45deg;
+}
+
+.card > * {
+  position: relative;
+  z-index: 1;
+}
+
+ul {
+  list-style-type: "- ";
+  padding: 0 0 0 15px;
+  margin: 0 0 10px;
+}
+
+.card.showDetails {
+  animation: expandCard 2s forwards;
+  height: fit-content;
+}
+
+.card.hideDetails {
+  animation: collapseCard 0.5s forwards;
+  height: fit-content;
+}
+
+@keyframes expandCard {
+  from {
+    max-height: 105px;
+  }
+  to {
+    max-height: 500px;
+  }
+}
+
+@keyframes collapseCard {
+  from {
+    max-height: 500px;
+  }
+  to {
+    max-height: 105px;
+  }
+}

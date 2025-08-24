@@ -1,0 +1,13 @@
+<ul>
+  @for (menu of ['upper-body', 'lower-body', 'full-body']; track menu) {
+    <li>
+      <a [routerLink]="'/'+menu">
+        <div [ngClass]="menu"
+             [class.active]="activeNav() == menu"
+             class="icon"
+        >
+        </div>
+      </a>
+    </li>
+  }
+</ul>
