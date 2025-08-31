@@ -7,6 +7,6 @@ article {
 article div {
   flex: 1;
   padding-top: 15px;
-  padding-bottom: 25px;
+  padding-bottom: 35px;
   overflow: scroll;
 }

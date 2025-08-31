@@ -3,6 +3,7 @@
 * {
   color: #F8F8FF;
   font-family: 'Roboto', sans-serif;
+  touch-action: manipulation;
 }
 
 h1 {
