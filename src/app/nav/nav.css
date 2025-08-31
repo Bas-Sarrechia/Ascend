@@ -39,22 +39,22 @@ ul li a {
 }
 
 .icon.upper-body {
-  -webkit-mask-image: url('/assets/outline/body/arm.svg');
-  mask-image: url('/assets/outline/body/arm.svg');
+  -webkit-mask-image: url('/Ascend/assets/outline/body/arm.svg');
+  mask-image: url('/Ascend/assets/outline/body/arm.svg');
   height: 48px;
   width: 48px;
 }
 
 .icon.lower-body {
-  -webkit-mask-image: url('/assets/outline/body/leg.svg');
-  mask-image: url('/assets/outline/body/leg.svg');
+  -webkit-mask-image: url('/Ascend/assets/outline/body/leg.svg');
+  mask-image: url('/Ascend/assets/outline/body/leg.svg');
   height: 48px;
   width: 48px;
 }
 
 .icon.full-body {
-  -webkit-mask-image: url('/assets/outline/body/body.svg');
-  mask-image: url('/assets/outline/body/body.svg');
+  -webkit-mask-image: url('/Ascend/assets/outline/body/body.svg');
+  mask-image: url('/Ascend/assets/outline/body/body.svg');
   height: 48px;
   width: 48px;
 }
