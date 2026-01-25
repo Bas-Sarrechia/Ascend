@@ -1,112 +1,151 @@
 .card {
-  background-color: var(--black-accent-1);
+  background: linear-gradient(135deg, rgba(39,39,39,0.95), rgba(35,35,35,0.9));
   margin-left: 15px;
   margin-right: 15px;
-  padding: 5px 15px;
-  border-radius: 10px;
+  padding: 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,107,0,0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: all 240ms cubic-bezier(0.34, 1.56, 0.64, 1);
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   position: relative;
   overflow: hidden;
-  border: 0.02rem solid var(--main-orange);
-  height: 110px;
-  transition: max-height 0.5s ease-in-out;
-  max-height: 105px;
-  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.6), /* main directional shadow */ 12px 12px 24px rgba(0, 0, 0, 0.3), /* deeper offset for depth */ 4px 4px 10px rgba(255, 107, 0, 0.3); /* faint orange glow along same direction */
 }
 
-.repweight {
-  border: 1px solid var(--main-orange);
-  background-color: rgb(255, 107, 0, 0.1);
-  border-radius: 5px;
-  font-size: 20px;
-  padding: 7px 10px;
-  font-family: 'Bebas Neue', sans-serif;
-  width: 2em;
-}
-
-.repweight:after {
-  content: ' kg';
-  float: right;
-}
-
-.modify--button {
-  border: 1px solid var(--main-orange);
-  padding: 0 10px;
-  border-radius: 5px;
-  outline: none;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 30px;
-  background-color: var(--main-orange);
-  color: white;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), /* main directional shadow */ 6px 6px 12px rgba(0, 0, 0, 0.1);
-}
-
-.modify--button.modify--button__minus {
-  border: 1px solid #a8a8a8;
-  background-color: rgb(168, 168, 168, 0.1);
-  color: #a8a8a8;
-}
-
-.details {
-  margin-bottom: 20px;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.label {
-  font-size: 10px;
-  margin-right: 5px;
-}
-
-.card::after {
+.card::before {
   content: '';
   position: absolute;
-  top: -220px;
+  top: 0;
+  left: 0;
   right: 0;
-  width: 50px;
-  height: 400px;
-  background: var(--main-orange);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,107,0,0.3), transparent);
   pointer-events: none;
-  rotate: -45deg;
 }
 
-.card > * {
-  position: relative;
-  z-index: 1;
+.card:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+  transform: translateY(-4px);
+  border-color: rgba(255,107,0,0.25);
 }
 
-ul {
-  list-style-type: "- ";
-  padding: 0 0 0 15px;
-  margin: 0 0 10px;
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
 }
 
-.card.showDetails {
-  animation: expandCard 2s forwards;
-  height: fit-content;
+.exercise-name {
+  margin: 0 0 14px 0;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1px;
+  color: #F8F8FF;
+  text-transform: capitalize;
+  order: -1;
 }
 
-.card.hideDetails {
-  animation: collapseCard 0.5s forwards;
-  height: fit-content;
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-@keyframes expandCard {
-  from {
-    max-height: 105px;
+.weight-tracker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, rgba(255,107,0,0.08), rgba(255,107,0,0.04));
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(255,107,0,0.2);
+  width: fit-content;
+  backdrop-filter: blur(2px);
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.weight-display {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+  min-width: 55px;
+  justify-content: center;
+  padding: 0 6px;
+}
+
+.weight-value {
+  font-size: 22px;
+  font-weight: 800;
+  font-family: 'Bebas Neue', sans-serif;
+  color: var(--main-orange);
+}
+
+.weight-unit {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.btn {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 180ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  outline: none;
+  font-weight: 700;
+}
+
+.btn:active {
+  transform: scale(0.92);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--main-orange), #ff8a3a);
+  color: white;
+  box-shadow: 0 6px 16px rgba(255,107,0,0.3), inset 0 -2px 6px rgba(0,0,0,0.2);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 8px 20px rgba(255,107,0,0.4), inset 0 -2px 6px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, rgba(168,168,168,0.15), rgba(168,168,168,0.08));
+  color: #bdbdbd;
+  border: 1.5px solid rgba(168,168,168,0.25);
+  box-shadow: inset 0 1px 4px rgba(0,0,0,0.15);
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, rgba(168,168,168,0.2), rgba(168,168,168,0.12));
+  color: #e0e0e0;
+  border-color: rgba(168,168,168,0.35);
+  transform: translateY(-2px);
+}
+
+/* responsive tweaks */
+@media (min-width: 720px) {
+  .card {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 20px;
   }
-  to {
-    max-height: 500px;
-  }
-}
 
-@keyframes collapseCard {
-  from {
-    max-height: 500px;
-  }
-  to {
-    max-height: 105px;
+  .exercise-name {
+    font-size: 22px;
   }
 }

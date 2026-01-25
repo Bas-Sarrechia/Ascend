@@ -1,4 +1,4 @@
 export interface Exercise {
   exercise: string,
-  steps: string[]
+  equipment?: 'machine' | 'free-weights'
 }

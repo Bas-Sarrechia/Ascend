@@ -1,13 +1,41 @@
-<ul>
-  @for (menu of ['upper-body', 'lower-body', 'full-body']; track menu) {
-    <li>
-      <a [routerLink]="'/'+menu">
-        <div [ngClass]="menu"
-             [class.active]="activeNav() == menu"
-             class="icon"
-        >
-        </div>
-      </a>
+<div class="nav-container">
+  <ul>
+    @for (menu of ['upper-body', 'lower-body', 'full-body']; track menu) {
+      <li>
+        <a [routerLink]="'/'+menu">
+          <div [ngClass]="menu"
+               [class.active]="activeNav() == menu"
+               class="icon"
+          >
+          </div>
+        </a>
+      </li>
+    }
+    <li class="hamburger-item">
+      <button class="hamburger" (click)="toggleMenu()" [class.open]="menuOpen()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </li>
+  </ul>
+
+  @if (menuOpen()) {
+    <div class="equipment-menu">
+      <button
+        class="equipment-option"
+        [class.active]="equipmentType() === 'machine'"
+        (click)="setEquipment('machine')"
+      >
+        Machine
+      </button>
+      <button
+        class="equipment-option"
+        [class.active]="equipmentType() === 'free-weights'"
+        (click)="setEquipment('free-weights')"
+      >
+        Free Weights
+      </button>
+    </div>
   }
-</ul>
+</div>
