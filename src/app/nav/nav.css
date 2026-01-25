@@ -84,18 +84,18 @@ ul li a {
 }
 
 .icon.upper-body {
-  -webkit-mask-image: url('/assets/outline/body/arm.svg');
-  mask-image: url('/assets/outline/body/arm.svg');
+  -webkit-mask-image: url('../../assets/outline/body/arm.svg');
+  mask-image: url('../../assets/outline/body/arm.svg');
 }
 
 .icon.lower-body {
-  -webkit-mask-image: url('/assets/outline/body/leg.svg');
-  mask-image: url('/assets/outline/body/leg.svg');
+  -webkit-mask-image: url('../../assets/outline/body/leg.svg');
+  mask-image: url('../../assets/outline/body/leg.svg');
 }
 
 .icon.full-body {
-  -webkit-mask-image: url('/assets/outline/body/body.svg');
-  mask-image: url('/assets/outline/body/body.svg');
+  -webkit-mask-image: url('../../assets/outline/body/body.svg');
+  mask-image: url('../../assets/outline/body/body.svg');
 }
 
 /* hamburger menu button */

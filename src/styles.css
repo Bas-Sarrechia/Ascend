@@ -17,7 +17,9 @@ h1 {
   margin-top: 10px;
 }
 
-body {
+html {
+  height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
   background: linear-gradient(135deg,
@@ -37,8 +39,40 @@ body {
   #272727 86.67%, #272727 93.33%,
   #282828 93.33%, #282828 100%
   );
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  padding-top: max(0px, env(safe-area-inset-top));
+  background: linear-gradient(135deg,
+  #1a1a1a 0%, #1a1a1a 6.67%,
+  #1b1b1b 6.67%, #1b1b1b 13.33%,
+  #1c1c1c 13.33%, #1c1c1c 20%,
+  #1d1d1d 20%, #1d1d1d 26.67%,
+  #1e1e1e 26.67%, #1e1e1e 33.33%,
+  #1f1f1f 33.33%, #1f1f1f 40%,
+  #202020 40%, #202020 46.67%,
+  #212121 46.67%, #212121 53.33%,
+  #222222 53.33%, #222222 60%,
+  #232323 60%, #232323 66.67%,
+  #242424 66.67%, #242424 73.33%,
+  #252525 73.33%, #252525 80%,
+  #262626 80%, #262626 86.67%,
+  #272727 86.67%, #272727 93.33%,
+  #282828 93.33%, #282828 100%
+  );
   font-size: 16px; /* sensible base */
   line-height: 1.4;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+app-root {
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 .icon {
