@@ -2,7 +2,8 @@ import Dexie, {Table} from 'dexie';
 
 interface ExerciseRecord {
   id: string,
-  weight: number
+  weight: number,
+  selectedAlternative?: string
 }
 
 export class AppDB extends Dexie {

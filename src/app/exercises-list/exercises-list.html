@@ -4,6 +4,7 @@
       <li>
         <app-exercise-card
           [exercise]="i.exercise"
+          [alternatives]="i.alternatives || []"
           [open]="i.open"
           (openUpdate)="handleCardToggle(i)"
         ></app-exercise-card>

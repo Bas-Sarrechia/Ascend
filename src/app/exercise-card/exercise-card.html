@@ -1,5 +1,15 @@
 <section class="card" (click)="updateOpenState()">
-  <h2 class="exercise-name">{{ exercise() }}</h2>
+  <div class="card-header">
+    <h2 class="exercise-name">{{ displayedExercise() }}</h2>
+    <button
+      *ngIf="hasAlternatives()"
+      class="btn-alternative"
+      (click)="rotateAlternative($event)"
+      title="Rotate to alternative exercise"
+    >
+      ⟲
+    </button>
+  </div>
   <div class="card-content">
     <div class="weight-tracker">
       <button class="btn btn-secondary" (click)="minusFiver($event)" title="Decrease weight">−</button>

@@ -35,18 +35,48 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
+  margin-bottom: 14px;
 }
 
 .exercise-name {
-  margin: 0 0 14px 0;
+  margin: 0;
   font-size: 20px;
   font-weight: 700;
   font-family: 'Bebas Neue', sans-serif;
   letter-spacing: 1px;
   color: #F8F8FF;
   text-transform: capitalize;
-  order: -1;
+  flex: 1;
+}
+
+.btn-alternative {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(255,107,0,0.15), rgba(255,107,0,0.08));
+  color: var(--main-orange);
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 180ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid rgba(255,107,0,0.2);
+  flex-shrink: 0;
+}
+
+.btn-alternative:hover {
+  background: linear-gradient(135deg, rgba(255,107,0,0.25), rgba(255,107,0,0.15));
+  border-color: rgba(255,107,0,0.35);
+  transform: scale(1.08) rotate(15deg);
+  box-shadow: 0 4px 12px rgba(255,107,0,0.2);
+}
+
+.btn-alternative:active {
+  transform: scale(0.95) rotate(15deg);
 }
 
 .card-content {

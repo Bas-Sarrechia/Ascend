@@ -127,6 +127,16 @@ export class ExerciseSchemaService {
     },
     "Incline chest press": {
       exercise: "Incline chest press",
+      equipment: "free-weights",
+      alternatives: ["Smith machine chest press"]
+    },
+    "Smith machine chest press": {
+      exercise: "Smith machine chest press",
+      equipment: "free-weights",
+      alternatives: ["Incline chest press"]
+    },
+    "Chest press": {
+      exercise: "Chest press",
       equipment: "free-weights"
     },
     "Cable fly": {
@@ -216,7 +226,7 @@ export class ExerciseSchemaService {
       this.freeWeightExercises["Incline chest press"],
       this.freeWeightExercises["Chest press"],
       this.freeWeightExercises["Cable fly"],
-      this.freeWeightExercises["Shoulder press"],
+      this.machineExercises["Shoulder press"],
       this.freeWeightExercises["Lateral raises"],
       this.freeWeightExercises["Tricep extensions with dumbel"],
       this.freeWeightExercises["Tricep extensions with device"],
