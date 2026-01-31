@@ -1,5 +1,6 @@
 article {
-  height: 100vh;
+  /* use dynamic viewport units on mobile to avoid 100vh issues on iOS */
+  min-height: 100dvh;
 }
 
 /* main scrollable content - keep behavior but center and constrain width for nicer layout */

@@ -64,7 +64,8 @@ body {
   );
   font-size: 16px; /* sensible base */
   line-height: 1.4;
-  height: 100vh;
+  /* use the dynamic viewport height to avoid iOS 100vh issues */
+  min-height: 100dvh;
   width: 100%;
   /* allow vertical scrolling for the page content; prevent horizontal overflow */
   overflow-y: auto;
@@ -73,7 +74,8 @@ body {
 
 app-root {
   display: block;
-  height: 100%;
+  /* ensure the app-root spans the visual viewport height on mobile */
+  min-height: 100dvh;
   width: 100%;
 }
 

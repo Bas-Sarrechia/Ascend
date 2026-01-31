@@ -89,7 +89,8 @@ ul li a {
 .icon.lower-body,
 .icon.full-body {
   display: inline-block;
-  background-color: transparent;
+  /* show a light gray fill for inactive masked icons */
+  background-color: var(--inactive);
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-position: center;
