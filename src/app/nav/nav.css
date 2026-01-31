@@ -8,7 +8,23 @@
   padding-bottom: env(safe-area-inset-bottom, 8px);
   backdrop-filter: blur(12px) saturate(125%);
   width: 100%;
+  /* allow touches/scrolling to pass through the nav background so page can scroll */
+  pointer-events: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: pan-y;
 }
+
+/* restore pointer events for interactive elements inside the nav */
+.icon,
+.icon *,
+.hamburger,
+.hamburger *,
+.equipment-menu,
+.equipment-menu *,
+ul li a {
+  pointer-events: auto;
+}
+
 
 .nav-container {
   position: relative;
