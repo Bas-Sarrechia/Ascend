@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none">
-  <rect width="24" height="24" fill="transparent"/>
-  <!-- clean stylized full-body silhouette for mask usage -->
-  <path fill="#000" d="M12 2c1.1 0 2 .9 2 2v3h2c1.1 0 2 .9 2 2v3c0 1.1-.9 2-2 2h-1v4c0 .83-.67 1.5-1.5 1.5H13c-0.83 0-1.5-.67-1.5-1.5V14H10c-1.1 0-2-.9-2-2V7c0-1.1.9-2 2-2h2V4c0-1.1.9-2 2-2z"/>
-</svg>
-
