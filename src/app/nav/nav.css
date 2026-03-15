@@ -1,6 +1,6 @@
 :host {
   position: fixed;
-  bottom: 0;
+  bottom: env(safe-area-inset-bottom);
   left: 0;
   right: 0;
   display: block;
@@ -11,9 +11,6 @@
   pointer-events: none;
   -webkit-tap-highlight-color: transparent;
   touch-action: pan-y;
-  /* Ensure nav is truly fixed to bottom on iOS */
-  padding-bottom: constant(safe-area-inset-bottom); /* iOS 11.0-11.2 */
-  padding-bottom: env(safe-area-inset-bottom); /* iOS 11.2+ */
 }
 
 /* restore pointer events for interactive elements inside the nav */
