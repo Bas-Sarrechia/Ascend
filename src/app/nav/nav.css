@@ -5,13 +5,15 @@
   right: 0;
   display: block;
   z-index: 40;
-  padding-bottom: env(safe-area-inset-bottom, 8px);
   backdrop-filter: blur(12px) saturate(125%);
   width: 100%;
   /* allow touches/scrolling to pass through the nav background so page can scroll */
   pointer-events: none;
   -webkit-tap-highlight-color: transparent;
   touch-action: pan-y;
+  /* Ensure nav is truly fixed to bottom on iOS */
+  padding-bottom: constant(safe-area-inset-bottom); /* iOS 11.0-11.2 */
+  padding-bottom: env(safe-area-inset-bottom); /* iOS 11.2+ */
 }
 
 /* restore pointer events for interactive elements inside the nav */
@@ -35,23 +37,26 @@ ul {
   list-style-type: none;
   display: flex;
   flex-direction: row;
-  padding: 10px 8px 0 8px;
+  padding: 8px 12px;
+  padding-bottom: calc(8px + constant(safe-area-inset-bottom));
+  padding-bottom: calc(8px + env(safe-area-inset-bottom));
   margin: 0;
   width: 100%;
   align-items: stretch;
-  justify-content: space-between;
-  background: linear-gradient(180deg, rgba(15,15,15,0.98), rgba(10,10,10,0.95));
-  border-top: 1.5px solid rgba(255,107,0,0.2);
-  box-shadow: 0 -12px 40px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.05);
-  border-radius: 16px 16px 0 0;
+  justify-content: space-around;
+  background: rgba(18, 18, 20, 0.92);
+  border-top: 0.5px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
 }
 
 ul li {
-  padding: 8px 0;
+  padding: 4px 0;
   display: flex;
   flex: 1;
   justify-content: center;
   align-items: center;
+  max-width: 80px;
 }
 
 ul li a {
@@ -59,38 +64,39 @@ ul li a {
   display: flex;
   flex: 1;
   align-items: center;
-  gap: 8px;
   text-decoration: none;
+  padding: 4px;
 }
 
 /* icon base improvements */
 .icon {
-  width: 52px;
-  height: 52px;
-  display: inline-block;
-  background: var(--inactive);
-  border-radius: 10px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
   transition: all 200ms cubic-bezier(0.3, 0.6, 0.3, 1);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4), inset 0 -2px 6px rgba(0,0,0,0.15);
+  background: transparent;
 }
 
 .icon:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.5), inset 0 -2px 6px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
 }
 
 .icon.active {
-  background: linear-gradient(180deg, var(--main-orange), #ff8a3a);
-  box-shadow: 0 8px 22px rgba(255,107,0,0.22), inset 0 -2px 8px rgba(0,0,0,0.2);
+  background: rgba(255, 107, 0, 0.15);
 }
 
 /* masked icons */
 .icon.upper-body,
 .icon.lower-body,
 .icon.full-body {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   /* show a light gray fill for inactive masked icons */
-  background-color: var(--inactive);
+  background-color: transparent;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-position: center;
@@ -100,19 +106,43 @@ ul li a {
   margin: 8px auto;
 }
 
-.icon.upper-body {
+/* Inner element for icon coloring */
+.icon.upper-body::before,
+.icon.lower-body::before,
+.icon.full-body::before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: #8a8a8e;
+  transition: background-color 200ms ease;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: 65%;
+  mask-size: 65%;
+}
+
+.icon.upper-body::before {
   -webkit-mask-image: url('../../assets/outline/body/arm.svg');
   mask-image: url('../../assets/outline/body/arm.svg');
 }
 
-.icon.lower-body {
+.icon.lower-body::before {
   -webkit-mask-image: url('../../assets/outline/body/leg.svg');
   mask-image: url('../../assets/outline/body/leg.svg');
 }
 
-.icon.full-body {
+.icon.full-body::before {
   -webkit-mask-image: url('../../assets/outline/body/body.svg');
   mask-image: url('../../assets/outline/body/body.svg');
+}
+
+.icon.active.upper-body::before,
+.icon.active.lower-body::before,
+.icon.active.full-body::before {
+  background-color: var(--main-orange);
 }
 
 /* hamburger menu button */
@@ -126,32 +156,36 @@ ul li a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   padding: 8px;
-  transition: transform 200ms ease;
+  transition: transform 150ms ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.hamburger:hover {
-  transform: scale(1.08);
+.hamburger:active {
+  transform: scale(0.9);
 }
 
 .hamburger:focus {
-  outline: 2px solid rgba(255,107,0,0.3);
-  border-radius: 6px;
+  outline: none;
 }
 
 .hamburger span {
   display: block;
-  width: 24px;
-  height: 2.5px;
-  background: var(--main-orange);
-  border-radius: 2px;
-  transition: all 300ms cubic-bezier(0.3, 0.6, 0.3, 1);
+  width: 20px;
+  height: 2px;
+  background: #8a8a8e;
+  border-radius: 1px;
+  transition: all 250ms ease;
   transform-origin: center;
 }
 
+.hamburger.open span {
+  background: var(--main-orange);
+}
+
 .hamburger.open span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
+  transform: translateY(7px) rotate(45deg);
 }
 
 .hamburger.open span:nth-child(2) {
@@ -160,69 +194,67 @@ ul li a {
 }
 
 .hamburger.open span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 /* equipment selection menu */
 .equipment-menu {
-  position: fixed;
+  position: absolute;
   bottom: calc(100% + 8px);
-  right: 8px;
-  background: linear-gradient(180deg, rgba(39,39,39,0.98), rgba(30,30,30,0.95));
-  border: 1px solid rgba(255,107,0,0.2);
+  right: 12px;
+  background: rgba(30, 30, 32, 0.98);
+  border: 0.5px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
-  box-shadow: 0 -12px 32px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.04);
-  overflow: visible;
-  animation: slideUp 250ms cubic-bezier(0.3, 0.6, 0.3, 1);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  animation: slideUp 200ms ease;
   z-index: 50;
-  min-width: 160px;
-  backdrop-filter: blur(4px);
+  min-width: 150px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 @keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(8px) scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
 .equipment-option {
   display: block;
   width: 100%;
-  padding: 14px 18px;
+  padding: 14px 16px;
   background: transparent;
   border: none;
-  color: #F8F8FF;
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
   cursor: pointer;
-  transition: all 160ms ease;
+  transition: all 120ms ease;
   text-align: left;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .equipment-option:not(:last-child) {
-  border-bottom: 1px solid rgba(255,107,0,0.08);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
 }
 
-.equipment-option:hover {
-  background: rgba(255,107,0,0.08);
-  color: var(--main-orange);
-  padding-left: 22px;
+.equipment-option:active {
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .equipment-option.active {
-  background: rgba(255,107,0,0.12);
   color: var(--main-orange);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .equipment-option.active::before {
   content: '✓ ';
   margin-right: 4px;
-  font-weight: 700;
 }

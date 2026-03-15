@@ -1,13 +1,22 @@
-import {Component, input, output, Signal, signal, inject, OnInit, computed} from '@angular/core';
+import {Component, input, output, Signal, signal, OnInit, computed} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {db} from '../db';
 import {liveQuery} from 'dexie';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {ExerciseSchemaService} from '../exercise-schema.service';
+import {ExerciseType} from '../exercises-list/exercise';
 
 export enum OpenState {
   NOT_TOGGLED, OPEN, CLOSED
 }
+
+// Weight increments based on exercise type
+const WEIGHT_INCREMENTS: Record<ExerciseType, number> = {
+  'barbell': 2.5,      // Olympic barbells - 2.5kg increments (plates on both sides)
+  'dumbbell': 2,       // Dumbbells typically go by 2kg
+  'machine': 5,        // Machines often have 5kg weight stacks
+  'cable': 2.5,        // Cable machines - 2.5kg increments
+  'bodyweight': 1      // For weighted bodyweight exercises
+};
 
 @Component({
   selector: 'app-exercise-card',
@@ -17,10 +26,9 @@ export enum OpenState {
   styleUrl: './exercise-card.css'
 })
 export class ExerciseCard implements OnInit {
-  private readonly schemaService = inject(ExerciseSchemaService);
-
   readonly exercise = input.required<string>();
   readonly alternatives = input<string[]>([]);
+  readonly exerciseType = input<ExerciseType>('machine');
 
   private readonly savedAlternative = signal<string | undefined>(undefined);
 
@@ -29,6 +37,10 @@ export class ExerciseCard implements OnInit {
     const original = this.exercise();
     // If we have a saved alternative, use it; otherwise use the original
     return saved || original;
+  });
+
+  readonly weightIncrement = computed(() => {
+    return WEIGHT_INCREMENTS[this.exerciseType()] || 5;
   });
 
   readonly repWeight: Signal<number> = toSignal(
@@ -120,13 +132,15 @@ export class ExerciseCard implements OnInit {
     return this.alternatives() && this.alternatives().length > 0;
   }
 
-  plusFiver($event: any) {
-    db.exercises.put({id: this.displayedExercise(), weight: (this.repWeight() ?? 0) + 5});
+  incrementWeight($event: any) {
+    const increment = this.weightIncrement();
+    db.exercises.put({id: this.displayedExercise(), weight: (this.repWeight() ?? 0) + increment});
     $event.stopPropagation();
   }
 
-  minusFiver($event: MouseEvent) {
-    db.exercises.put({id: this.displayedExercise(), weight: Math.max((this.repWeight() ?? 0) - 5, 0)});
+  decrementWeight($event: MouseEvent) {
+    const increment = this.weightIncrement();
+    db.exercises.put({id: this.displayedExercise(), weight: Math.max((this.repWeight() ?? 0) - increment, 0)});
     $event.stopPropagation();
   }
 }

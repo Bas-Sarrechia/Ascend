@@ -16,172 +16,213 @@ export class ExerciseSchemaService {
   private readonly machineExercises: { [key: string]: Exercise } = {
     "Leg press": {
       exercise: "Leg press",
-      equipment: "machine"
+      equipment: "machine",
+      type: "machine"
     },
     "Seated leg curl": {
       exercise: "Seated leg curl",
-      equipment: "machine"
+      equipment: "machine",
+      type: "machine"
     },
     "Shoulder press": {
       exercise: "Shoulder press",
-      equipment: "machine"
+      equipment: "machine",
+      type: "machine"
     },
     "Chest press": {
       exercise: "Chest press",
-      equipment: "machine"
+      equipment: "machine",
+      type: "machine"
     },
     "Lat pulldown": {
       exercise: "Lat pulldown",
-      equipment: "machine"
+      equipment: "machine",
+      type: "machine"
     },
     "Bicep curl": {
       exercise: "Bicep curl",
-      equipment: "machine"
+      equipment: "machine",
+      type: "machine"
     },
     "Tricep extensions": {
       exercise: "Tricep extensions",
-      equipment: "machine"
+      equipment: "machine",
+      type: "machine"
     },
     "Abdominal crunch": {
       exercise: "Abdominal crunch",
-      equipment: "machine"
+      equipment: "machine",
+      type: "machine"
     },
     "Pec fly": {
       exercise: "Pec fly",
-      equipment: "machine"
+      equipment: "machine",
+      type: "machine"
     },
     "Mid row": {
       exercise: "Mid row",
-      equipment: "machine"
+      equipment: "machine",
+      type: "machine"
     },
     "Lateral raise": {
       exercise: "Lateral raise",
-      equipment: "machine"
+      equipment: "machine",
+      type: "machine"
     },
     "Crunches": {
       exercise: "Crunches",
-      equipment: "machine"
+      equipment: "machine",
+      type: "bodyweight"
     },
     "Hip abduction": {
       exercise: "Hip abduction",
-      equipment: "machine"
+      equipment: "machine",
+      type: "machine"
     },
     "Leg extensions": {
       exercise: "Leg extensions",
-      equipment: "machine"
+      equipment: "machine",
+      type: "machine"
     },
     "Low back": {
       exercise: "Low back",
-      equipment: "machine"
+      equipment: "machine",
+      type: "machine"
     },
     "Russian twists": {
       exercise: "Russian twists",
-      equipment: "machine"
+      equipment: "machine",
+      type: "bodyweight"
     },
     "Plank": {
       exercise: "Plank",
-      equipment: "machine"
+      equipment: "machine",
+      type: "bodyweight"
     }
   };
 
   private readonly freeWeightExercises: { [key: string]: Exercise } = {
     "Smith squats": {
       exercise: "Smith squats",
-      equipment: "free-weights"
+      equipment: "free-weights",
+      type: "barbell"
     },
     "Leg press": {
       exercise: "Leg press",
-      equipment: "free-weights"
+      equipment: "free-weights",
+      type: "machine"
     },
     "Leg extensions": {
       exercise: "Leg extensions",
-      equipment: "free-weights"
+      equipment: "free-weights",
+      type: "machine"
     },
     "Sled push": {
       exercise: "Sled push",
-      equipment: "free-weights"
+      equipment: "free-weights",
+      type: "machine"
     },
     "Lunges": {
       exercise: "Lunges",
-      equipment: "free-weights"
+      equipment: "free-weights",
+      type: "dumbbell"
     },
     "Calf raises": {
       exercise: "Calf raises",
-      equipment: "free-weights"
+      equipment: "free-weights",
+      type: "machine"
     },
     "Wall slide": {
       exercise: "Wall slide",
-      equipment: "free-weights"
+      equipment: "free-weights",
+      type: "bodyweight"
     },
     "Mountain climbers": {
       exercise: "Mountain climbers",
-      equipment: "free-weights"
+      equipment: "free-weights",
+      type: "bodyweight"
     },
     "Knee tucks": {
       exercise: "Knee tucks",
-      equipment: "free-weights"
+      equipment: "free-weights",
+      type: "bodyweight"
     },
     "Russian twists": {
       exercise: "Russian twists",
-      equipment: "free-weights"
+      equipment: "free-weights",
+      type: "bodyweight"
     },
     "Incline chest press": {
       exercise: "Incline chest press",
       equipment: "free-weights",
+      type: "dumbbell",
       alternatives: ["Smith machine chest press"]
     },
     "Smith machine chest press": {
       exercise: "Smith machine chest press",
       equipment: "free-weights",
+      type: "barbell",
       alternatives: ["Incline chest press"]
     },
     "Chest press": {
       exercise: "Chest press",
-      equipment: "free-weights"
+      equipment: "free-weights",
+      type: "dumbbell"
     },
     "Cable fly": {
       exercise: "Cable fly",
-      equipment: "free-weights"
+      equipment: "free-weights",
+      type: "cable"
     },
     "Lateral raises": {
       exercise: "Lateral raises",
-      equipment: "free-weights"
+      equipment: "free-weights",
+      type: "dumbbell"
     },
     "Tricep extensions with dumbel": {
       exercise: "Tricep extensions with dumbel",
-      equipment: "free-weights"
+      equipment: "free-weights",
+      type: "dumbbell"
     },
     "Tricep extensions with device": {
       exercise: "Tricep extensions with device",
-      equipment: "free-weights"
+      equipment: "free-weights",
+      type: "cable"
     },
     "Tricep dips": {
       exercise: "Tricep dips",
-      equipment: "free-weights"
+      equipment: "free-weights",
+      type: "bodyweight"
     },
     "V-Bar pull down": {
       exercise: "V-Bar pull down",
-      equipment: "free-weights"
+      equipment: "free-weights",
+      type: "cable"
     },
     "Lateral pulldown wide V bar": {
       exercise: "Lateral pulldown wide V bar",
-      equipment: "free-weights"
+      equipment: "free-weights",
+      type: "cable"
     },
     "V-bar rows": {
       exercise: "V-bar rows",
-      equipment: "free-weights"
+      equipment: "free-weights",
+      type: "cable"
     },
     "Face pulls": {
       exercise: "Face pulls",
-      equipment: "free-weights"
+      equipment: "free-weights",
+      type: "cable"
     },
     "Bicep curls": {
       exercise: "Bicep curls",
-      equipment: "free-weights"
+      equipment: "free-weights",
+      type: "dumbbell"
     },
     "Hammer curls": {
       exercise: "Hammer curls",
-      equipment: "free-weights"
+      equipment: "free-weights",
+      type: "dumbbell"
     }
   };
 

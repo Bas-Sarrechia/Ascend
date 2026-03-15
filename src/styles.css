@@ -1,20 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 * {
   color: #F8F8FF;
-  font-family: 'Roboto', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif;
   touch-action: manipulation;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
 }
 
 h1 {
-  letter-spacing: 2px;
-  font-size: 24px;
-  font-family: 'Bebas Neue', sans-serif;
-  margin-bottom: 15px;
-  margin-top: 10px;
+  letter-spacing: -0.5px;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  margin-top: 8px;
 }
 
 html {
@@ -22,65 +22,33 @@ html {
   width: 100%;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg,
-  #1a1a1a 0%, #1a1a1a 6.67%,
-  #1b1b1b 6.67%, #1b1b1b 13.33%,
-  #1c1c1c 13.33%, #1c1c1c 20%,
-  #1d1d1d 20%, #1d1d1d 26.67%,
-  #1e1e1e 26.67%, #1e1e1e 33.33%,
-  #1f1f1f 33.33%, #1f1f1f 40%,
-  #202020 40%, #202020 46.67%,
-  #212121 46.67%, #212121 53.33%,
-  #222222 53.33%, #222222 60%,
-  #232323 60%, #232323 66.67%,
-  #242424 66.67%, #242424 73.33%,
-  #252525 73.33%, #252525 80%,
-  #262626 80%, #262626 86.67%,
-  #272727 86.67%, #272727 93.33%,
-  #282828 93.33%, #282828 100%
-  );
+  background: #0f0f10;
 }
 
 body {
   margin: 0;
   padding: 0;
   padding-top: max(0px, env(safe-area-inset-top));
-  background: linear-gradient(135deg,
-  #1a1a1a 0%, #1a1a1a 6.67%,
-  #1b1b1b 6.67%, #1b1b1b 13.33%,
-  #1c1c1c 13.33%, #1c1c1c 20%,
-  #1d1d1d 20%, #1d1d1d 26.67%,
-  #1e1e1e 26.67%, #1e1e1e 33.33%,
-  #1f1f1f 33.33%, #1f1f1f 40%,
-  #202020 40%, #202020 46.67%,
-  #212121 46.67%, #212121 53.33%,
-  #222222 53.33%, #222222 60%,
-  #232323 60%, #232323 66.67%,
-  #242424 66.67%, #242424 73.33%,
-  #252525 73.33%, #252525 80%,
-  #262626 80%, #262626 86.67%,
-  #272727 86.67%, #272727 93.33%,
-  #282828 93.33%, #282828 100%
-  );
-  font-size: 16px; /* sensible base */
+  background: #0f0f10;
+  font-size: 16px;
   line-height: 1.4;
-  /* use the dynamic viewport height to avoid iOS 100vh issues */
   min-height: 100dvh;
   width: 100%;
-  /* allow vertical scrolling for the page content; prevent horizontal overflow */
   overflow-y: auto;
   overflow-x: hidden;
+  /* Prevent pull-to-refresh on iOS when at top */
+  overscroll-behavior-y: none;
 }
 
 app-root {
-  display: block;
-  /* ensure the app-root spans the visual viewport height on mobile */
+  display: flex;
+  flex-direction: column;
   min-height: 100dvh;
   width: 100%;
 }
 
 .icon {
-  background: var(--inactive);
+  background: #8a8a8e;
 }
 
 .icon.active {
@@ -88,12 +56,12 @@ app-root {
 }
 
 :root {
-  --bg-black: #121212;
-  --black-accent-1: #272727;
+  --bg-black: #0f0f10;
+  --black-accent-1: #1c1c1e;
   --main-orange: #FF6B00;
-  --inactive: #86888E;
-  --muted: #BDBDBD;
-  --card-glow: rgba(255,107,0,0.08);
+  --inactive: #8a8a8e;
+  --muted: #8e8e93;
+  --card-bg: rgba(28, 28, 30, 0.95);
 }
 
 /* smooth scrolling and subtle global utilities */
@@ -107,19 +75,20 @@ a {
 }
 
 :focus {
-  outline: 2px solid rgba(255,107,0,0.14);
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid rgba(255, 107, 0, 0.5);
   outline-offset: 2px;
 }
 
-/* custom thin scrollbar for modern browsers */
+/* Hide scrollbars but keep functionality */
 *::-webkit-scrollbar {
-  height: 8px;
-  width: 8px;
+  display: none;
 }
-*::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.06);
-  border-radius: 8px;
-}
-*::-webkit-scrollbar-track {
-  background: transparent;
+
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

@@ -5,6 +5,7 @@
         <app-exercise-card
           [exercise]="i.exercise"
           [alternatives]="i.alternatives || []"
+          [exerciseType]="i.type || 'machine'"
           [open]="i.open"
           (openUpdate)="handleCardToggle(i)"
         ></app-exercise-card>

@@ -12,12 +12,13 @@
   </div>
   <div class="card-content">
     <div class="weight-tracker">
-      <button class="btn btn-secondary" (click)="minusFiver($event)" title="Decrease weight">−</button>
+      <button class="btn btn-secondary" (click)="decrementWeight($event)" title="Decrease weight">−</button>
       <div class="weight-display">
         <span class="weight-value">{{ repWeight() }}</span>
         <span class="weight-unit">kg</span>
       </div>
-      <button class="btn btn-primary" (click)="plusFiver($event)" title="Increase weight">+</button>
+      <button class="btn btn-primary" (click)="incrementWeight($event)" title="Increase weight">+</button>
     </div>
+    <span class="increment-hint">±{{ weightIncrement() }}kg</span>
   </div>
 </section>
