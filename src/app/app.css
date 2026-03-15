@@ -1,24 +1,18 @@
 article {
-  /* use dynamic viewport units on mobile to avoid 100vh issues on iOS */
+  min-height: 100vh;
   min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+  display: block;
+  background-color: #0f0f10;
+  padding-bottom: 100px; /* Space for nav bar */
 }
 
 /* main scrollable content */
-article div {
-  flex: 1;
-  padding: 16px 0 0 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-  /* Allow momentum scrolling on iOS */
-  overscroll-behavior-y: contain;
+article > div {
+  padding: 16px 0;
 }
 
-/* container to limit line length and add breathing room for content */
-article div > * {
+/* container to limit line length */
+article > div > * {
   width: 100%;
   max-width: 720px;
   margin: 0 auto;
